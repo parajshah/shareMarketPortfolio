@@ -19,7 +19,7 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="./css/style.css">
-        <title>Expense Tracker</title>
+        <title>Share Market Portfolio</title>
         
     </head>
     <body>
@@ -44,26 +44,70 @@
                         <input type="number" class="form-control" id="quantity" placeholder="Enter qty.."
                         required>
                     </div>
-                    <div class="col-md-2 text-center">
-                        <button class="btn btn-success mt-2" id="addBtn" type="submit">Add <i class="fas fa-check"></i></button>
-                        <button class="btn btn-danger mt-2" id="resetBtn" type="reset">Reset <i class="fas fa-times"></i></button>
+                    <div class="form-group col-md-2">
+                        <label for="">Action</label>
+                        <select name="action" id="action" class="form-control">
+                            <option value="buy">Buy</option>
+                            <option value="sell">Sell</option>
+                        </select>
                     </div>
+                </div>
+                <div class="text-center form-row d-flex justify-content-center align-items-center">
+                    <button class="btn btn-success mt-2 px-3 mx-2" id="addBtn" type="submit">Add <i class="fas fa-check"></i></button>
+                    <button class="btn btn-danger mt-2 px-3 mx-2" id="resetBtn" type="reset">Reset <i class="fas fa-times"></i></button>
                 </div>
             </form>
         </div>
 
-        <div class="table-responsive">
+        <div class="table-responsive mt-5" id="shortTerm">
+            <h2 class="text-center">All scripts</h2>
             <table class="table table-bordered table-hover mt-4">
                 <thead class="">
                     <tr>
-                        <th scope="col">Date</th>
+                        <th scope="col">Purchase Date</th>
                         <th scope="col">Company Name</th>
                         <th scope="col">Rate</th>
                         <th scope="col">Qty</th>
                         <th scope="col">Total Cost</th>
                     </tr>
                 </thead>
-                <tbody id="shares">
+                <tbody id="allShares">
+                               
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive mt-5" id="shortTerm">
+            <h2 class="text-center">Short Term P/L</h2>
+            <table class="table table-bordered table-hover mt-4">
+                <thead class="">
+                    <tr>
+                        <th scope="col">Purchase Date</th>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Total Cost</th>
+                    </tr>
+                </thead>
+                <tbody id="shortTermShares">
+                               
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive mt-5" id="longTerm">
+            <h2 class="text-center">Long Term P/L</h2>
+            <table class="table table-bordered table-hover mt-4">
+                <thead class="">
+                    <tr>
+                        <th scope="col">Purchase Date</th>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Total Cost</th>
+                    </tr>
+                </thead>
+                <tbody id="longTermShares">
                                
                 </tbody>
             </table>
