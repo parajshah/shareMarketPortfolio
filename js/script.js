@@ -20,18 +20,21 @@ addBtn.addEventListener('click', addShare);
 function addShare(e) {
     e.preventDefault();
 
-    if (date.value == '' || companyName.value == '' || rate.value == '' || quantity.value == '') {
-        alert('Please fill all the input fields!')
-        return;
-    }
+    // if (date.value == '' || companyName.value == '' || rate.value == '' || quantity.value == '') {
+    //     alert('Please fill all the input fields!')
+    //     return;
+    // }
 
     const tableRow = document.createElement('tr');
+
+    const tableAction = document.createElement('td');
+    tableAction.innerText = action.value.toUpperCase();
 
     const tableDate = document.createElement('td');
     tableDate.innerText = formatDate(date.value);
 
     const tableCompanyName = document.createElement('td');
-    tableCompanyName.innerText =  companyName.value;
+    tableCompanyName.innerText =  companyName.value.toUpperCase();
 
     const tableRate = document.createElement('td');
     tableRate.innerText = rate.value;
@@ -46,6 +49,7 @@ function addShare(e) {
 
     // add input data to new row
     tableRow.appendChild(tableDate);
+    tableRow.appendChild(tableAction);
     tableRow.appendChild(tableCompanyName);
     tableRow.appendChild(tableRate);
     tableRow.appendChild(tableQuantity);
@@ -69,17 +73,36 @@ function addShare(e) {
             clearFields();
             return;
         }
-    } else {
+    } else if (action.value == 'buy') {
         if (today - shareBuyDate < 0) {
             invalidDate();
             clearFields();
             return;
+        } else {
+            // add to all shares
+            allShares.appendChild(tableRow);
+            clearFields();
+            return;
+        }        
+    } else if (action.value == 'bonus') {
+        if (rate.value != '0') {
+            alert('Rate must be zero for bonus shares')
+        } else {
+            // add to all shares
+            allShares.appendChild(tableRow);
+            clearFields();
+            return;
         }
-        // add to all shares
-        allShares.appendChild(tableRow);
-        clearFields();
+    } else if (action.value == 'split') {
+        if (rate.value != '0') {
+            alert('Rate must be zero for split')
+        } else {
+            // add to all shares
+            allShares.appendChild(tableRow);
+            clearFields();
+            return;
+        }
     }
-
     // console.log(tableRow);
 }
 
